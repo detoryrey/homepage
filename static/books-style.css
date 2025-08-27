@@ -43,38 +43,12 @@ figure {
     padding: 20px;
 }
 
-.center-content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.article-section {
-    margin-left: auto;
-    margin-right: 0;
-    text-align: justify;
-    line-height: 1.5;
-    width: 655px;
-    justify-content: center;
-}
-
 .center-content img {
     width: 290px;
     height: auto;
     flex-shrink: 0;
 }
 
-.article {
-    width: 655px;
-    text-align: justify;
-    line-height: 1.5;
-    margin-left: auto;
-    margin: 0 auto;
-}
 
 .gideon-roman-regular {
   font-family: "Gideon Roman", serif;
