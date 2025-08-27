@@ -1,0 +1,40 @@
+<div class="pages">
+  <header class="menu">
+    <nav class="navbar navbar-expand-lg navbar-light custom-nav">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img id="ikon" src="/static/img/ikon.png" alt="" width="30" height="24">
+          Home blog
+        </a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="home.html" class="nav-link current">HOME</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="games.html" role="button"
+               aria-expanded="false">GAMES</a>
+            <ul class="border-3 dropdown-menu dropdown-menu-dark lh-lg libertinus-sans-regular placeholder-wave rounded-0 text-uppercase translate-middle-x menu-main">
+              <li><a class="dropdown-item" href="">Infinity Nikky</a></li>
+              <li><a class="dropdown-item" href="">Genshin Impact</a></li>
+              <li><a class="dropdown-item" href="">Wuthering Waves</a></li>
+              <li><a class="dropdown-item" href="">Assassin's Creed II</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="books.html" role="button"
+               aria-expanded="false">BOOKS</a>
+            <ul class="border-3 dropdown-menu dropdown-menu-dark lh-lg libertinus-sans-regular placeholder-wave rounded-0 text-uppercase translate-middle-x menu-main">
+              <li><a class="dropdown-item" href="{{ url_for('throne_of_glass') }}">Throne of glass</a></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading4">Mistborn</a></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading4">Harry Potter</a></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading4">The Poppy War</a></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading4">Song of Ice and Fire</a></li>
+              <li><a class="dropdown-item" href="#scrollspyHeading4">The Way of Kings</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</div>

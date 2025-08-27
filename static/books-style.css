@@ -1,0 +1,12 @@
+body{
+    background-color: #CBCBCB;
+    margin: 0;
+    font-size: 14px;
+    color: #2E373A;
+    font-family: "Libre Baskerville", sans-serif;
+}
+main{
+    width: min(1400px, 100vw);
+    margin: auto;
+    padding: 20px;
+}
