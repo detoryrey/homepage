@@ -1,14 +1,14 @@
 <div class="pages">
-    <header class="menu">
-        <nav class="navbar navbar-expand-lg navbar-light custom-nav">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img id="ikon" src="/static/img/ikon.png" alt="" width="30" height="24">
-                    Home blog
-                </a>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="home.html" class="nav-link current">HOME</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+  <header class="menu">
+    <nav class="navbar navbar-expand-lg navbar-light custom-nav">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img id="ikon" src="/static/img/ikon.png" alt="" width="30" height="24">
+          Home blog
+        </a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link current">HOME</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"

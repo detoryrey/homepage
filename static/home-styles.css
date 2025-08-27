@@ -63,11 +63,7 @@ header.menu .navbar {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
-@media (height > 100vh) {
-  header.menu {
-    background-color: rgba(255, 182, 193, 0.9); /* рожеве меню */
-  }
-}
+
 
 /* Розмір іконки */
 #ikon {
