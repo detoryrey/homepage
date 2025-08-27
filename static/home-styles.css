@@ -178,14 +178,6 @@ header.menu .navbar {
     position: relative; /* контекст для абсолютного позиціонування */
 }
 
-.dropdown-menu {
-    display: none; /* стандартне сховане меню */
-    top: 100%;
-    right: 0;
-    overflow: visible;
-    min-width: 150px;
-    transform: none; /* відключає translate-middle-x */
-}
 @media (max-width: 600px) { /* можна підлаштувати під будь-яку ширину */
   .dropdown-menu {
     left: auto;
