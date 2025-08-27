@@ -134,26 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navbar.classList.remove('scrolled');
       }
     });
-    document.addEventListener('show.bs.dropdown', function (e) {
-      // закриваємо всі відкриті dropdown-и, крім того, який відкривається зараз
-      document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
-        if (menu !== e.target.querySelector('.dropdown-menu')) {
-          bootstrap.Dropdown.getInstance(menu.closest('.dropdown-toggle') || menu.previousElementSibling)?.hide();
-        }
-      });
-    });
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-      // отримуємо положення меню та ширину вікна
-      const rect = menu.getBoundingClientRect();
-      const overflowRight = rect.right - window.innerWidth;
-
-      if (overflowRight > 0) {
-        // зсуваємо меню вліво на потрібну величину
-        menu.style.left = `-${overflowRight}px`;
-      } else {
-        menu.style.left = '0';
-      }
-    });
 });
 
 
