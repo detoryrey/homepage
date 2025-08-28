@@ -1,8 +1,7 @@
 from flask import Flask, render_template
 import sqlite3
 app = Flask(__name__)
-# db = sqlite3.connect('homepage.db')
-# cur = db.cursor()
+
 
 @app.route('/')
 def home():
@@ -12,7 +11,18 @@ def home():
 
 @app.route('/throne-of-glass')
 def throne_of_glass():
-    return render_template('ThroneofGlass.html')
+    db = sqlite3.connect('homepage.db')
+    db.row_factory = sqlite3.Row
+    cur = db.cursor()
+    books = cur.execute("SELECT * FROM books WHERE page='throne' order by order_num").fetchall()
+    return render_template('ThroneofGlass.html', books=books)
 
+@app.route('/mistborn')
+def mistborn():
+    db = sqlite3.connect('homepage.db')
+    db.row_factory = sqlite3.Row
+    cur = db.cursor()
+    books = cur.execute("SELECT * FROM books WHERE page='mistborn' order by order_num").fetchall()
+    return render_template('Mistborn.html', books=books)
 
 

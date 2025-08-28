@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block header %}
+  <link href="/static/books-style.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+  <main>
+  {% with book_name="MISTBORN", book_img="/static/mistborn/mistborn.jpg", book_description="
+        When magic has gone from the world, and a vicious king rules from his throne of glass, an assassin comes
+        to the castle. She does not come to kill, but to win her freedom. If she can defeat twenty-three
+        killers, thieves, and warriors in a competition to find the greatest assassin in the land, she will
+        become the king’s champion and earn her freedom. Her name is Celaena Sardothien – beautiful, deadly, and
+        destined for greatness.
+      " %}
+    {% include "book_header.html" %}
+
+  {% endwith %}
+'
+
+    {% for book in books %}
+
+        {% include "book_desc.html" %}
+
+    {% endfor %}
+
+  </main>
+
+{% endblock %}
