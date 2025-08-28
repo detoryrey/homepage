@@ -6,21 +6,21 @@
 
 {% block body %}
   <main>
-  {% with book_name="MISTBORN", book_img="/static/mistborn/mistborn.jpg", book_description="
-        When magic has gone from the world, and a vicious king rules from his throne of glass, an assassin comes
-        to the castle. She does not come to kill, but to win her freedom. If she can defeat twenty-three
-        killers, thieves, and warriors in a competition to find the greatest assassin in the land, she will
-        become the king’s champion and earn her freedom. Her name is Celaena Sardothien – beautiful, deadly, and
-        destined for greatness.
+    {% with book_name="MISTBORN", book_img="/static/mistborn/mistborn.jpg", book_description="
+        The first Mistborn trilogy is set in a dark world ruled for a thousand years by the tyrannical Lord Ruler,
+        where ash constantly falls from the sky and mists shroud the nights. Young heroes discover their powers
+        as Mistborn and join a rebellion aiming to overthrow the oppressive regime. Along the way, they face chaos,
+        betrayal, prophecies, and the mysteries of the past, striving to save the world from impending disaster.
+        The trilogy is a story of freedom, self-discovery, and finding heroism in the darkest times.
       " %}
-    {% include "book_header.html" %}
+      {% include "book_header.html" %}
 
-  {% endwith %}
-'
+    {% endwith %}
+    '
 
     {% for book in books %}
 
-        {% include "book_desc.html" %}
+      {% include "book_desc.html" %}
 
     {% endfor %}
 

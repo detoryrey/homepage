@@ -25,4 +25,12 @@ def mistborn():
     books = cur.execute("SELECT * FROM books WHERE page='mistborn' order by order_num").fetchall()
     return render_template('Mistborn.html', books=books)
 
+@app.route('/potter')
+def potter():
+    db = sqlite3.connect('homepage.db')
+    db.row_factory = sqlite3.Row
+    cur = db.cursor()
+    books = cur.execute("SELECT * FROM books WHERE page='potter' order by order_num").fetchall()
+    return render_template('Potter.html', books=books)
+
 

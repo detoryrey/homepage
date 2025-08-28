@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block header %}
+  <link href="/static/books-style.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+  <main>
+    {% with book_name="HARRY POTTER", book_img="/static/potter/fon_harry.png", book_description="
+        The saga follows a boy who survived an attack by the dark wizard Voldemort and grew up in a world
+        where magic is hidden from ordinary people. He enters Hogwarts School of Witchcraft and Wizardry,
+        where he learns about friendship, love, betrayal, and uncovers secrets of his past.
+        The series explores the struggle between good and evil, the importance of choices,
+        courage in the face of danger, and the power of friendship and family. Beginning as
+        a children’s story, it gradually evolves into a deeper epic about growing up, self-sacrifice,
+        and the triumph of light over darkness.
+      " %}
+      {% include "book_header.html" %}
+
+    {% endwith %}
+    '
+
+    {% for book in books %}
+
+      {% include "book_desc.html" %}
+
+    {% endfor %}
+
+  </main>
+
+{% endblock %}
