@@ -1,6 +1,5 @@
 
 main{
-    padding: 20px;
     background-color: #faf0e6;
     margin: 0;
     padding-top: 76px;
@@ -24,7 +23,26 @@ main{
 }
 
 
-.content_glass {
+.book-header-container {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.book-header-container.potter {
+    background-image: url("/static/potter/fon_harry.png");
+}
+
+.book-header-container.throne {
+    background-image: url("/static/glass/fon.webp");
+}
+
+.book-header-container.mistborn {
+    background-image: url("/static/mistborn/mistborn.jpg");
+}
+
+
+/*.content_glass {
     text-align: center;
     filter: blur(1px) grayscale(3%) brightness(70%);
     object-fit: cover;
@@ -35,7 +53,7 @@ main{
     top: 0;
     left: 0;
     background-image: url("/static/glass/fon.webp");
-}
+}*/
 
 .article {
     max-width: 655px;
