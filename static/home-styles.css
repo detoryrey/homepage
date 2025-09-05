@@ -338,4 +338,6 @@ h3[id="NamesBooks"] {
     border-radius: 10px;
     transform: scale(1.05);
 }
-
+.footer{
+    background-color: #3d2b1f;
+}

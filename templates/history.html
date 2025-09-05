@@ -1,0 +1,251 @@
+{% extends "layout.html" %}
+{% block header %}
+  <link href="/static/history-style.css" rel="stylesheet">
+  <script src="/static/historypage.js"></script>
+{% endblock %}
+
+
+{% block body %}
+  <main>
+    <div class="container-background">
+      <section class="block-history pb-3">
+        <div class="title-page">
+          <h1>The inner world of a book</h1>
+        </div>
+
+        <select id="select-history" class="form-history form-select text-center form-select-lg m-auto rounded-3"
+                aria-label="Default select example">
+          <option value="0" selected>Mistborn</option>
+          <option value="1">Harry Potter</option>
+          <option value="2">The Poppy War</option>
+          <option value="3">A Song of Ice and Fire</option>
+        </select>
+
+        <div id="carousel-0" class="card carousel slide my-md-5 d-block">
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/static/mistborn/lutadel.webp" class="d-block mx-auto" alt="Mistborn"
+                   width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">Map Scadrial </h5>
+                <p class="title-card-text card-text">The people here live under the Lord Ruler, an immortal king that
+                  presides over all known lands. Long ago, the Lord Ruler defeated a great evil and ascended to godhood,
+                  becoming the Sliver of
+                  Infinity. He remade the world as he saw fit, elevating those who supported him while casting out those
+                  who opposed him. From the many cultures of Scadrial he formed a hierarchy that persists to this day,
+                  crushing all efforts of rebellion or dissent under his incredible might.</p>
+                <a href="{{ url_for('mistborn') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">Mistborn</small></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/static/mistborn/lutadetown.png" class="d-block mx-auto" alt="Mistborn" width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">Luthadel</h5>
+                <p class="title-card-text card-text">Home to the Lord Ruler, its structures are Gothic in style, and it
+                  is considered the most fortified and powerful city on Scadrial. This is, of course, thanks to the Lord
+                  Ruler. Surrounding the city, within its walls, are gates placed at regular intervals, each crafted
+                  from a primary metal: copper, brass, pewter, zinc, and others.
+                  Like all major cities in the Final Empire, Luthadel was built near a number of mines, thus hampering
+                  the ability of Ruin to monitor the establishment of the Lord Ruler's stockpiles.</p>
+                <a href="{{ url_for('mistborn') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">Mistborn</small></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/static/mistborn/allomant.webp" class="d-block mx-auto" alt="Mistborn"
+                   width="100%" height="1083.140">
+              <div class="card-body">
+                <h5 class="card-title text-center">Allomantic Metal</h5>
+                <p class="title-card-text card-text">Allomantic Metals are substances used to fuel Allomancy, a power
+                  that allows users (Mistborn or Mistings) to gain various physical, mental, and temporal abilities by
+                  "burning" the ingested metal, which acts as a conduit for power. There are 16 base metals, often
+                  grouped into Internal/External and Push/Pull categories within four broader groups: Physical, Mental,
+                  Temporal, and Enhancement. Burning a metal causes a warm feeling in the stomach and vaporizes the
+                  metal, making it a consumable resource. </p>
+                <a href="{{ url_for('mistborn') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">Mistborn</small></p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-0"
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-0"
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div id="carousel-1" class="card carousel slide my-md-5 d-none">
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/static/potter/Wizarding_Schools_Map_LR.webp" class="d-block mx-auto" alt="Harry Potter"
+                   width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">Wizarding World</h5>
+                <p class="title-card-text card-text">The wizarding world, also referred to as the magical community, was
+                  the society in which wizards and witches lived and interacted, separate from non-wizarding society.
+                  The two communities were kept separate through the use of charms, spells, and secrecy. Wizards were
+                  forbidden to reveal anything about magic to Muggle society due to the International Statute of
+                  Wizarding Secrecy.
+
+                  Each country had a form of wizarding government to oversee magical affairs in their territory, such as
+                  a Ministry of Magic or a Council of Magic. The International Confederation of Wizards served as a
+                  wizarding intergovernmental organisation.</p>
+                <a href="{{ url_for('potter') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">Harry Potter</small></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/static/potter/maroder.jpg" class="d-block mx-auto" alt="Harry Potter" width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">Marauders map</h5>
+                <p class="title-card-text card-text">The Marauder's Map was a magical document that revealed all of
+                  Hogwarts School of Witchcraft and Wizardry. Not only did it show every classroom, every hallway, and
+                  every corner of the castle, but it also showed every inch of the grounds, as well as all the secret
+                  passages that were hidden within its walls and the location of every person in the grounds, portrayed
+                  by a dot.
+
+                  It was also capable of accurately identifying each person, and was not fooled by Animagi, Polyjuice
+                  Potions, or Invisibility Cloaks; even the Hogwarts ghosts or Peeves were not exempt. Nor were animals,
+                  such as the caretaker's cat.</p>
+                <a href="{{ url_for('potter') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">Harry Potter</small></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/static/potter/Founders_Hero.png" class="d-block mx-auto" alt="Harry Potter"
+                   width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">Hogwarts founders</h5>
+                <p class="title-card-text card-text">The Hogwarts founders, also known as the Hogwarts Four, were a
+                  quartet of witches and wizards who established Hogwarts School of Witchcraft and Wizardry during the
+                  medieval era, in the 10th century. These four founders, Godric Gryffindor, Helga Hufflepuff, Rowena
+                  Ravenclaw, and Salazar Slytherin, were widely described as being the most brilliant witches and
+                  wizards of the time.
+
+                  Each of them created their own House in Hogwarts: Gryffindor, Hufflepuff, Ravenclaw, and Slytherin
+                  respectively. Students were divided up into these Houses based on the virtues that each of the
+                  founders valued most in their students. They laid the foundations for the largest and most prestigious
+                  Wizarding school in Britain.</p>
+                <a href="{{ url_for('potter') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">Harry Potter</small></p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-1"
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-1"
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div id="carousel-2" class="card carousel slide my-md-5 d-none">
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/static/poppy/poppemap.avif" class="d-block mx-auto" alt="The Poppy War"
+                   width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">The Poppy War Map</h5>
+                <p class="title-card-text card-text">Nikan is a vast empire located south of the Hinterlands, and is the
+                  primary setting of The Poppy War. Nikan is inspired by the
+                  geographic and military history of China. Nikan's history has been described as "a highly entertaining
+                  saga of constant warfare". The Empire was formed a millennium before the timeline of The Poppy War,
+                  after the Red Emperor unified multiple monastic peoples across the continent. Nikan used to span half
+                  the continent under the Red Emperor. The Old Nikara Empire has been called the birthplace of modern
+                  civilization, the center of the world.</p>
+                <a href="{{ url_for('poppy') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">The Poppy War</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="carousel-3" class="card carousel slide my-md-5 d-none">
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/static/gamethrone/map-ice-fare.jpg" class="d-block mx-auto" alt="A Song of Ice and Fire"
+                   width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">A Song of Ice and Fire Map</h5>
+                <p class="title-card-text card-text">The known world is composed of at least three continents
+                  (Westeros, Essos, and Sothoryos), a large landmass (Ulthos), and a number of many smaller islands.
+                  None of the four major landmasses have been completely mapped, and much of the world remains
+                  unexplored.
+                  Located in the far west of the known world, the continent of Westeros is long and relatively narrow,
+                  extending from Dorne in the south to the Lands of Always Winter in the far north. The Wall, the border
+                  between the Seven Kingdoms and lands beyond the Wall to the north, is 300 miles long, North of the
+                  Wall, much
+                  land remains uncharted.</p>
+                <a href="{{ url_for('gamethrone') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">A Song of Ice and Fire</small></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/static/gamethrone/mapgate.jpeg" class="d-block mx-auto" alt="A Song of Ice and Fire"
+                   width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">King's Landing</h5>
+                <p class="title-card-text card-text">King's Landing is the capital of the Seven Kingdoms, located in the
+                  crownlands on the east coast of Westeros. It is situated along the kingsroad at the mouth of the
+                  Blackwater Rush and overlooks Blackwater Bay. King's Landing is the site of the Iron Throne and the
+                  Red Keep, which is the seat of the king, Robert I from House Baratheon of King's Landing.
+
+                  The main city is surrounded by a wall, manned by the City Watch of King's Landing, also known as the
+                  gold cloaks. King's Landing is the most populous city in Westeros, but unsightly and dirty compared
+                  to other cities. </p>
+                <a href="{{ url_for('gamethrone') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">A Song of Ice and Fire</small></p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="/static/gamethrone/Valyria.png" class="d-block mx-auto" alt="A Song of Ice and Fire"
+                   width="100%">
+              <div class="card-body">
+                <h5 class="card-title text-center">Valyria Map</h5>
+                <p class="title-card-text card-text">Valyria, also called Old Valyria, is a ruined city in Essos. It is
+                  a long-dead city of wonderment, and was once the capital of a great empire called the Valyrian
+                  Freehold. It was destroyed by a cataclysmic event known as the Doom of Valyria a century before
+                  Aegon's Landing. It is the ancestral home of House Targaryen, House Celtigar, and House
+                  Velaryon.
+                  Valyria was on the Valyrian peninsula, which extended into the Summer Sea. The Doom of Valyria
+                  shattered the peninsula, separating the city of Valyria from the Lands of the Long Summer by the
+                  Smoking Sea. </p>
+                <a href="{{ url_for('gamethrone') }}" class="button-lined btn w-100">Book description</a>
+                <p class="card-text"><small class="text-body-secondary">A Song of Ice and Fire</small></p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-3"
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-3"
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+
+  </main>
+
+{% endblock %}

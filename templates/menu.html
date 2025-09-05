@@ -8,28 +8,37 @@
         </a>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link current">HOME</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">CHARACTER</a></li>
+          <li class="nav-item"><a href="{{ url_for('history') }}" class="nav-link">HISTORY</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+               aria-expanded="false">GAMES</a>
+            <ul class="border-3
+                       dropdown-menu
+                       dropdown-menu-dark
+                       lh-lg
+                       libertinus-sans-regular
+                       placeholder-wave
+                       rounded-0
+                       text-uppercase
+                       translate-middle-x
+                       menu-main">
+              <li><a class="dropdown-item" href="">Infinity Nikky</a></li>
+              <li><a class="dropdown-item" href="">Genshin Impact</a></li>
+              <li><a class="dropdown-item" href="">Wuthering Waves</a></li>
+              <li><a class="dropdown-item" href="">Assassin's Creed II</a></li>
+            </ul>
+          </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                           aria-expanded="false">GAMES</a>
-                        <ul class="border-3 dropdown-menu dropdown-menu-dark lh-lg libertinus-sans-regular placeholder-wave rounded-0 text-uppercase translate-middle-x menu-main">
-                            <li><a class="dropdown-item" href="">Infinity Nikky</a></li>
-                            <li><a class="dropdown-item" href="">Genshin Impact</a></li>
-                            <li><a class="dropdown-item" href="">Wuthering Waves</a></li>
-                            <li><a class="dropdown-item" href="">Assassin's Creed II</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a
-                                class="nav-link dropdown-toggle"
-                                data-bs-toggle="dropdown"
-                                href="#"
-                                role="button"
-                           aria-expanded="false">BOOKS</a>
-                        <ul
-                            class="border-3
+          <li class="nav-item dropdown">
+            <a
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-expanded="false">BOOKS</a>
+            <ul
+                class="border-3
                              dropdown-menu
                              dropdown-menu-dark
                              dropdown-menu-end
@@ -39,18 +48,25 @@
                              rounded-0
                              text-uppercase
                              menu-main"
-                        >
-                            <li><a class="dropdown-item" href="{{ url_for('throne_of_glass') }}">Throne of glass</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url_for('mistborn') }}">Mistborn</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('potter') }}">Harry Potter</a></li>
-                            <li><a class="dropdown-item" href="#scrollspyHeading4">The Poppy War</a></li>
-                            <li><a class="dropdown-item" href="#scrollspyHeading4">Song of Ice and Fire</a></li>
-                            <li><a class="dropdown-item" href="#scrollspyHeading4">The Way of Kings</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+            >
+              <li><a class="dropdown-item" href="{{ url_for('throne_of_glass') }}">Throne of glass</a>
+              </li>
+              <li><a class="dropdown-item" href="{{ url_for('mistborn') }}">Mistborn</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('potter') }}">Harry Potter</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('poppy') }}">The Poppy War</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('gamethrone') }}">A Song of Ice and Fire</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('stormlight') }}">The Stormlight archive</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            {% if user and user.is_authenticated %}
+            <a href="{{ url_for('profile') }}" class="nav-link text-decoration-underline ps-4">My Profile</a>
+            {% else %}
+            <a href="{{ url_for('log_in') }}" class="nav-link text-decoration-underline ps-4">Log In</a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 </div>

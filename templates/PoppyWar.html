@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block header %}
+  <link href="/static/books-style.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+  <main>
+    {% with book_name="THE POPPY WAR", book_description="
+        When war tears through the land of Nikan, a poor orphan girl seizes her only chance
+        to escape a life of misery. Chosen to study at the empire’s most elite military
+        academy, Rin discovers a power within her that is as dangerous as it is divine.
+        Touched by the gods and driven by fury, she must decide whether to save her people—or
+        consume them. Her name is Fang Runin, and the price of her destiny may be the world
+        itself.
+      ", book_header_class="poppy" %}
+      {% include "book_header.html" %}
+
+    {% endwith %}
+    '
+
+    {% for book in books %}
+
+      {% include "book_desc.html" %}
+
+    {% endfor %}
+
+  </main>
+
+{% endblock %}

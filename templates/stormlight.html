@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block header %}
+  <link href="/static/books-style.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+  <main>
+    {% with book_name="THE STORMLIGHT ARCHIVE", book_description="
+        Across the storm-ravaged land of Roshar, kingdoms rise and fall while the fate of nations hangs by a thread.
+        Knights wield impossible powers, ancient oaths awaken, and creatures thought long vanished stir once more.
+        Heroes and outcasts alike face war, betrayal, and the weight of destiny, where every choice can reshape history.
+        From shattered plains to towering fortresses, from mystical forests to storm-lashed coasts,
+        magic and war are inseparable. Loyalty is tested, honor is fragile, and ambition can be as deadly as a blade.
+        In a world where legends walk among mortals and the past threatens the future,
+        the Stormlight Archive tells an epic tale of survival, power, and the soul of Roshar.
+      ", book_header_class="stormlight" %}
+      {% include "book_header.html" %}
+
+    {% endwith %}
+    '
+
+    {% for book in books %}
+
+      {% include "book_desc.html" %}
+
+    {% endfor %}
+
+  </main>
+
+{% endblock %}

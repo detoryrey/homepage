@@ -6,12 +6,21 @@ main{
 
 }
 
-.libertinus-sans-regular {
-    font-family: "Libertinus Sans", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    color: #faf0e6;
-    font-size: 70px;
+/*.libertinus-sans-regular {*/
+/*    font-family: "Libertinus Sans", sans-serif;*/
+/*    font-weight: 1000;*/
+/*    font-style: normal;*/
+/*    color: #faf0e6;*/
+/*    font-size: 90px;*/
+/*}*/
+
+h1 {
+    font-family: fantasy;
+    letter-spacing: 0.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 240px;
+    font-size: 150px;
 }
 
 .Show {
@@ -22,15 +31,15 @@ main{
     font-size: 45px;
 }
 
-
 .book-header-container {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    min-height: 650px;
 }
 
 .book-header-container.potter {
-    background-image: url("/static/potter/fon_harry.png");
+    background-image: url("/static/potter/fon_harry.jpg");
 }
 
 .book-header-container.throne {
@@ -39,6 +48,15 @@ main{
 
 .book-header-container.mistborn {
     background-image: url("/static/mistborn/mistborn.jpg");
+}
+.book-header-container.poppy {
+    background-image: url("/static/poppy/poppy.jpg");
+}
+.book-header-container.gamethrone {
+    background-image: url("/static/gamethrone/gamethrone.jpg");
+}
+.book-header-container.stormlight {
+    background-image: url("/static/stormlight/stormlight.jpg");
 }
 
 
@@ -56,11 +74,13 @@ main{
 }*/
 
 .article {
-    max-width: 655px;
+    max-width: 737px;
     text-align: justify;
     line-height: 1.5;
     margin-left: auto;
     margin: 0 auto;
+    padding-top: 210px;
+    color: #faf0e6;
 }
 
 figure {
@@ -70,9 +90,9 @@ figure {
     margin-top: -50px;
 }
 
-.sich{
-    max-width: 500px;
-}
+/*.sich{
+   max-width: 500px;
+/*}*/
 
 .blok-section {
     text-align: center; /* центр заголовка */

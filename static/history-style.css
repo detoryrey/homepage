@@ -1,0 +1,47 @@
+h1 {
+    font-family: fantasy;
+    letter-spacing: 0.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 150px;
+}
+.title-page{
+    padding-top: 100px;
+}
+.card{
+    width: 60%;
+    margin: 0 auto;
+}
+.form-history{
+    max-width: 1426px;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1),
+    0 4px 8px rgba(0,0,0,0.1),
+    0 8px 16px rgba(0,0,0,0.05) !important;
+}
+.form-history option {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  color: #000;
+  font-size: 1rem;
+}
+.form-history option:hover {
+  background-color: #dc3545 !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.container-background{
+    background-image: url("/static/backg.png");
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.title-card-text{
+    font-family: "Cambria Math", cursive;
+    font-size: 1.25rem;
+}
+.button-lined{
+    background-color: #f5d9c3 !important;
+}

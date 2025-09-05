@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block header %}
+  <link href="/static/books-style.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+  <main>
+    {% with book_name="A SONG OF ICE AND FIRE", book_description="
+        When kingdoms vie for power and betrayal hides behind every throne,
+        Westeros teeters on the edge of chaos. Noble houses scheme and plot, armies march to war,
+        and ancient forces long thought dead stir in the shadows. Dragons have returned, magic reawakens,
+        and beyond the Wall, a darkness approaches that threatens all living things. Heroes and villains alike
+        are tested by fire, blood, and loyalty, where every choice carries the weight of life and death.
+        In a land where honor is fragile, ambition deadly, and alliances fleeting, the song of ice and fire
+        is sung in war, in sacrifice, and in the struggle for survival—and destiny spares no one.
+      ", book_header_class="gamethrone" %}
+      {% include "book_header.html" %}
+
+    {% endwith %}
+    '
+
+    {% for book in books %}
+
+      {% include "book_desc.html" %}
+
+    {% endfor %}
+
+  </main>
+
+{% endblock %}
