@@ -20,7 +20,7 @@ h1 {
     font-size: 150px;
 }
 .login-form-container {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
 }
 #button-verification{
@@ -33,7 +33,4 @@ h1 {
     margin: 0 auto;
     display: block;
     width: 50%;
-}
-.form-regist{
-    text-align: center;
 }

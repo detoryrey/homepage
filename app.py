@@ -2,14 +2,17 @@ from flask import Flask, render_template, g
 from db import get_db
 from account_app import account_app
 import click
+from flask_session import Session
 
 app = Flask(__name__)
 
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+app.config["SESSION_FILE_DIR"] = "session_data"
+Session(app, )
 app.config['DATABASE'] = 'homepage.db'
 
 app.register_blueprint(account_app)
-
-
 
 @app.teardown_appcontext
 def fuck_you(exception):
@@ -28,9 +31,7 @@ def home():
 def history():
     return render_template("history.html")
 
-@app.route('/log-in')
-def log_in():
-    return render_template("log_in.html")
+
 
 @app.route('/throne-of-glass')
 def throne_of_glass():

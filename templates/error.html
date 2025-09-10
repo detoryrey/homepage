@@ -1,0 +1,21 @@
+{% block header %}
+  <script src="/static/error.js"></script>
+{% endblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, msg in messages %}
+    {% if category == 'error' %}
+      <div aria-live="polite" aria-atomic="true" class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto text-danger">Error</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            {{ msg }}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endwith %}
