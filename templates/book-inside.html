@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block header %}
+  <link href="/static/star-rating.css" rel="stylesheet">
+  <link href="/static/booklist.css" rel="stylesheet">
+<script src="/static/star-rating.js"></script>
+{% endblock %}
+
+{% block body %}
+  <section class="book-info" style="padding-top: 76px">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <img src="{{ book['bookimg'] }}" class="bookimg-inside" style="width: 470px; height: auto;">
+        </div>
+        <div class="col">
+          <h1 class="insidename nosifer-regular">{{ book['bookname'] }}</h1>
+          <p class="autor-inside quintessential-regular">{{ book['autor'] }}</p>
+          <p class="desc-inside">{{ book['bookdesc']|safe }}</p>
+          <h3>Genre:</h3>
+          <p></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <div class="rating-box">
+          <h3>Rate the book:</h3>
+          <select class="star-rating modal-content">
+            <option value="">Select a rating</option>
+            <option value="5">Excellent</option>
+            <option value="4">Very Good</option>
+            <option value="3">Average</option>
+            <option value="2">Poor</option>
+            <option value="1">Terrible</option>
+          </select>
+
+          <script>
+              var stars = new StarRating('.star-rating');
+          </script>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+{% endblock %}

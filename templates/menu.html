@@ -8,7 +8,7 @@
         </a>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link current">HOME</a></li>
-          <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-link current">ListBooks</a></li>
+          <li class="nav-item"><a href="{{ url_for('booklist') }}" class="nav-link current">BOOKLIST</a></li>
           <li class="nav-item"><a href="blog.html" class="nav-link">CHARACTER</a></li>
           <li class="nav-item"><a href="{{ url_for('history') }}" class="nav-link">HISTORY</a></li>
           <li class="nav-item dropdown">
@@ -60,8 +60,8 @@
             </ul>
           </li>
           <li class="nav-item">
-            {% if user and user.is_authenticated %}
-              <a href="{{ url_for('profile') }}" class="nav-link text-decoration-underline ps-4">My Profile</a>
+            {% if session['user_id'] %}
+              <a href="{{ url_for('account_app.profile') }}" class="nav-link text-decoration-underline ps-4">My Profile</a>
             {% else %}
               <a href="{{ url_for('account_app.log_in') }}" class="nav-link text-decoration-underline ps-4">Log In</a>
             {% endif %}

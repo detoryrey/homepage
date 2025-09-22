@@ -1,4 +1,6 @@
-from flask import Flask, render_template, g
+import math
+
+from flask import Flask, render_template, g, request
 from db import get_db
 from account_app import account_app
 import click
@@ -31,6 +33,49 @@ def home():
 def history():
     return render_template("history.html")
 
+
+
+@app.route('/booklist')
+def booklist():
+    db = get_db(app)
+    cur = db.cursor()
+
+    genre_id = request.args.get("genre")
+    page = int(request.args.get("page", 1))
+
+    per_page = 25
+    offset = per_page * (page - 1)
+
+    all_genres = cur.execute("SELECT * FROM ganre").fetchall()
+
+    if genre_id and genre_id != "all":
+        books = (cur.execute("SELECT * FROM booklist "
+                            "JOIN book_genre on booklist.id = book_genre.book_id "
+                            "WHERE book_genre.genre_id = ? ORDER BY id DESC LIMIT ? OFFSET ?", (genre_id,per_page, offset,))
+                 .fetchall())
+        total_books = cur.execute("SELECT COUNT(*) FROM booklist JOIN book_genre on booklist.id = book_genre.book_id "
+                                 "WHERE book_genre.genre_id = ?",(genre_id,)).fetchone()[0]
+    else:
+        books = cur.execute("SELECT * FROM booklist ORDER BY id DESC LIMIT ? OFFSET ?", (per_page, offset,)).fetchall()
+        total_books = cur.execute("SELECT COUNT(*) FROM booklist").fetchone()[0]
+    print(books)
+
+    # books = cur.execute("SELECT * FROM booklist ORDER BY id DESC LIMIT ? OFFSET ?", (per_page, offset,)).fetchall()
+
+    total_pages = math.floor((total_books + per_page - 1) / per_page)
+    return render_template("book-list.html",
+                           booklist=books,
+                           page=page,
+                           total_pages=total_pages,
+                           all_genres=all_genres
+                           )
+
+@app.route('/booklist/<int:book_id>')
+def book_inside(book_id):
+    db = get_db(app)
+    cur = db.cursor()
+    book = cur.execute("SELECT * FROM booklist WHERE id = ?", (book_id,)).fetchone()
+    return render_template("book-inside.html", book=book)
 
 
 @app.route('/throne-of-glass')

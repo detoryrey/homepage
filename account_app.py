@@ -16,7 +16,36 @@ def account():
 
 @account_app.route('/profile')
 def profile():
-    return render_template("myprofile.html")
+    user_id = session.get("user_id")
+    if user_id is None:
+        return redirect(url_for("account_app.log_in"))
+
+    db = get_db(account_app)
+    cur = db.cursor()
+    user = cur.execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
+
+    if user is None:
+        flash("User not found.")
+        return redirect(url_for("account_app.log_in"))
+    posts = cur.execute("SELECT * FROM post WHERE post.user_id = ? ORDER BY id DESC", (user_id,)).fetchall()
+    return render_template("myprofile.html", user=user, posts=posts)
+
+@account_app.route('/add-post', methods=['POST'])
+def add_post():
+        content = request.form.get("content")
+        user_id = session.get("user_id")
+
+        if content:
+            db = get_db(account_app)
+            cur = db.cursor()
+            cur.execute("INSERT INTO post (content, user_id) VALUES (?, ?)", (content, user_id))
+
+            db.commit()
+        return redirect(url_for("account_app.profile"))
+
+if __name__ == "__main__":
+    account_app.run(debug=True)
+
 
 @account_app.route('/log-in', endpoint='log_in', methods=('GET', 'POST'))
 def log_in():
@@ -41,7 +70,7 @@ def log_in():
 
         flash(error)
 
-    return render_template("log_in.html")
+    return render_template("log_in.html") # user=session["user_id"]#)
 
 
 @account_app.route("/register", methods=['GET', 'POST'])

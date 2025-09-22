@@ -1,10 +1,65 @@
 {% extends "layout.html" %}
 {% block header %}
   <link href="/static/profile-style.css" rel="stylesheet">
+  <script src="/static/profile.js"></script>
 {% endblock %}
 
 
 {% block body %}
+  <section class="profile">
+    <div class="profile-header"></div>
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <img src="/static/img/ikon.png" alt="user photo" class="user-photo act rounded-circle">
+        <div class="user-info p-5">
+          <h2 class="mb-1">{{ user['username'] }}</h2>
+        </div>
+      </div>
+    </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="tabs col-2 py-4">
+          <div>
+            <button class="tab-link active" data-tab="blog">Blog</button>
+          </div>
+          <div class="my-2">
+            <button class="tab-link" data-tab="books">Books read</button>
+          </div>
+          <div>
+            <button class="tab-link" data-tab="planned">Planned books</button>
+          </div>
+        </div>
+
+        <div class="col-10">
+          <div class="tab-content active" id="blog">
+            <form method="POST" action="/add-post">
+              <textarea id="contentblog" name="content" placeholder="Write your impressions of the book."></textarea>
+              <br>
+              <button id="publish" class="btn btn-lg" type="submit">Publish</button>
+            </form>
+            {% for post in posts %}
+              <div class="card my-3 shadow-sm card-footer">
+                <div class="card-body">
+                  <p class="card-text">{{ post['content'] }}</p>
+                  <small class="text-muted modal-footer">{{ post['date'] }}</small>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="tab-content" id="books">
+            <h2>Books read</h2>
+          </div>
+
+          <div class="tab-content" id="planned">
+            <h2>Planned books</h2>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
 {% endblock %}

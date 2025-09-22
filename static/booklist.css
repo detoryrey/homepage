@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Quintessential&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nosifer&display=swap");
+
+
+:root {
+     --gl-star-empty: url(/static/img/star-empty.svg);  /* if using background images */
+    --gl-star-full: url(/static/img/star-full.svg);    /* if using background images */
+}
+
+main{
+    background-color: #fffaf0;
+}
+h1 {
+    padding-top: 76px;
+}
+.button_genre {
+    border: none;
+    background-color: #a58181;
+    width: 207px;
+    height: 50px;
+    font-family: "Ojuju", sans-serif;
+    font-size: larger;
+}
+#genres{
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: larger;
+}
+#bookname{
+    font-family: "Libertinus Sans", sans-serif;
+}
+
+
+/*inside*/
+.book-info{
+    background-color: #fffaf0;
+}
+.rating-box{
+    display: inline-block;
+}
+.bookimg-inside{
+    box-shadow: 0 0 15px 5px rgba(80, 80, 80, 0.5);
+}
+.insidename{
+    font-family: "Libertinus Sans", sans-serif;
+}
+.desc-inside{
+    font-family: "Libertinus Sans", sans-serif
+}
+.quintessential-regular {
+  font-family: "Quintessential", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.nosifer-regular {
+  font-family: "Nosifer", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

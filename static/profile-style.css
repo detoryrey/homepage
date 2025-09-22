@@ -1,0 +1,76 @@
+.profile {
+    background-color: #fffaf0;
+}
+
+.profile-header {
+    background-image: url("/static/red.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 500px;
+}
+
+.container {
+    padding-top: 10px;
+}
+.container h2{
+    margin-top: 0;
+}
+
+.user-photo {
+    width: 150px;
+    height: auto;
+    border-color: #800d1c;
+    border-image: none;
+    border-radius: 50% 50% 50% 50%;
+    border-style: solid;
+    border-width: 6px;
+}
+
+.user-info {
+    left: auto;
+}
+.tabs {
+    border-bottom: 2px solid #ddd;
+}
+.tabs button {
+    border: none;
+    background: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-family: "Libertinus Sans", sans-serif;
+}
+.tabs button.active {
+    border-bottom: 3px solid rgba(92, 12, 12, 0.5);
+    color: rgba(83, 16, 16, 0.5);
+    font-weight: bold;
+}
+#contentblog{
+    height: 100px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(133, 17, 17, 0.5);
+    font-family: "Libertinus Sans", sans-serif;
+    transition: box-shadow 0.3s, border 0.3s;
+    font-size: 20px;
+}
+#contentblog:focus{
+    box-shadow: 0 0 10px 4px rgba(80, 80, 80, 0.5);
+    outline: none;
+}
+#publish{
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #BC8F8F;
+    width: 200px;
+    font-family: "Libertinus Sans", sans-serif;
+    font-size: 20px;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
