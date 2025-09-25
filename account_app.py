@@ -1,11 +1,13 @@
+from dbm import sqlite3
 from multiprocessing.resource_tracker import register
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from acl_decorators.login_required import login_required
-from flask import Blueprint, render_template, request, redirect, flash, url_for, session
+from flask import Blueprint, render_template, request, redirect, flash, url_for, session, jsonify
 from db import get_db
 import click
+from datetime import datetime
 account_app = Blueprint('account_app', __name__)
 
 
@@ -29,6 +31,37 @@ def profile():
         return redirect(url_for("account_app.log_in"))
     posts = cur.execute("SELECT * FROM post WHERE post.user_id = ? ORDER BY id DESC", (user_id,)).fetchall()
     return render_template("myprofile.html", user=user, posts=posts)
+
+def add_book(user_id, book_id, list_type):
+    db = get_db(account_app)
+    cur = db.cursor()
+
+    cur.execute("SELECT planned_book, read_book FROM user_books WHERE user_id = ? AND book_id = ?", (user_id, book_id))
+    row = cur.fetchone()
+
+    if row:
+        if list_type == "read":
+            cur.execute("UPDATE user_books SET read_book = 1 WHERE user_id = ? AND book_id = ?", (user_id, book_id))
+        elif list_type == "planned":
+            cur.execute("UPDATE user_books SET planned_book = 1 WHERE user_id = ? AND book_id = ?", (user_id, book_id))
+    else:
+        planned = 1 if list_type == "planned" else 0
+        read = 1 if list_type == "read" else 0
+        cur.execute("INSERT INTO user_books(user_id, book_id, read_book, planned_book) VALUES (?, ?, ?, ?)", (user_id, book_id, read, planned))
+
+    db.commit()
+
+@account_app.route('/add_book', methods=['POST'])
+def add_book():
+    data = request.json
+    user_id = data.get('user_id')
+    book_id = data.get('book_id')
+    list_type = data.get('list_type')
+    add_book(user_id, book_id, list_type)
+    return jsonify({"success": True})
+
+if __name__ == '__main__':
+    account_app.run(debug=True)
 
 @account_app.route('/add-post', methods=['POST'])
 def add_post():

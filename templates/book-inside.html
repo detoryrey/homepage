@@ -2,41 +2,65 @@
 {% block header %}
   <link href="/static/star-rating.css" rel="stylesheet">
   <link href="/static/booklist.css" rel="stylesheet">
-<script src="/static/star-rating.js"></script>
+  <script src="/static/star-rating.js"></script>
+  <script src="/static/booksadded.js"></script>
+
 {% endblock %}
 
 {% block body %}
-  <section class="book-info" style="padding-top: 76px">
-    <div class="container">
+  <section class="book-info" style="padding-top: 120px; min-height: 100vh">
+    <div class="container" style="max-width: 1500px">
       <div class="row">
         <div class="col">
-          <img src="{{ book['bookimg'] }}" class="bookimg-inside" style="width: 470px; height: auto;">
+          <img src="{{ book['bookimg'] }}" class="bookimg-inside mt-lg-5" style="width: 470px; height: auto;">
+          <div class="mt-3">
+            <div class="dropdown">
+              <button class="addingbook btn bg-danger-subtle dropdown-toggle" type="button" id="bookMenuButton"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                Add book
+              </button>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item" type="button">Planned books</button></li>
+                <li><button class="dropdown-item" type="button">Read books</button></li>
+              </ul>
+            </div>
+          </div>
+
+
         </div>
-        <div class="col">
+        <div class="col m-auto">
           <h1 class="insidename nosifer-regular">{{ book['bookname'] }}</h1>
           <p class="autor-inside quintessential-regular">{{ book['autor'] }}</p>
-          <p class="desc-inside">{{ book['bookdesc']|safe }}</p>
-          <h3>Genre:</h3>
+          <div class="gideon-roman-regular mt-sm-5">{{ book['bookdesc']|safe }}</div>
+          <h3 class="tag-book pt-lg-4">Tags:</h3>
+          {% for tag in all_tags %}
+            <a class="alltags rounded-5 btn bg-danger-subtle"
+               href="{{ url_for('booklist', tag=tag['id']) }}"
+            >{{ tag['tag_name'] }}</a>
+          {% endfor %}
           <p></p>
         </div>
       </div>
       <div class="row">
         <div class="col text-center">
           <div class="rating-box">
-          <h3>Rate the book:</h3>
-          <select class="star-rating modal-content">
-            <option value="">Select a rating</option>
-            <option value="5">Excellent</option>
-            <option value="4">Very Good</option>
-            <option value="3">Average</option>
-            <option value="2">Poor</option>
-            <option value="1">Terrible</option>
-          </select>
+            <h3 class="rate-book pt-lg-4">Rate the book:</h3>
+            <form method="POST" action="{{ url_for('rate', book_id=book['id']) }}">
+              <select class="star-rating modal-content" name="rating" required>
+                <option value="">Select a rating</option>
+                <option value="5">Excellent</option>
+                <option value="4">Very Good</option>
+                <option value="3">Average</option>
+                <option value="2">Poor</option>
+                <option value="1">Terrible</option>
+              </select>
+              <button class="sub-btn btn bg-danger-subtle m-sm-3" type="submit">Submit</button>
+            </form>
 
-          <script>
-              var stars = new StarRating('.star-rating');
-          </script>
-        </div>
+            <script>
+                var stars = new StarRating('.star-rating');
+            </script>
+          </div>
         </div>
       </div>
     </div>

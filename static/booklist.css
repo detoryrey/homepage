@@ -10,8 +10,9 @@
 main{
     background-color: #fffaf0;
 }
-h1 {
+.allbook {
     padding-top: 76px;
+    font-size: 40px !important;
 }
 .button_genre {
     border: none;
@@ -36,25 +37,56 @@ h1 {
 .book-info{
     background-color: #fffaf0;
 }
+.addingbook{
+    border: none;
+    background: none;
+    font-family: "Libertinus Sans", sans-serif !important;
+    width: 150px;
+    margin-top: 40px;
+}
 .rating-box{
     display: inline-block;
 }
 .bookimg-inside{
     box-shadow: 0 0 15px 5px rgba(80, 80, 80, 0.5);
 }
-.insidename{
-    font-family: "Libertinus Sans", sans-serif;
-}
 .desc-inside{
     font-family: "Libertinus Sans", sans-serif
 }
+.sub-btn{
+    border: none;
+    background: none;
+    font-family: "Libertinus Sans", sans-serif !important;
+    width: 150px;
+}
+.tag-book{
+    font-family: "Libertinus Sans", sans-serif;
+    font-weight: 600;
+}
+.alltags{
+    font-family: "Libertinus Sans", sans-serif !important;
+    min-width: 100px;
+    gap: 10px !important;
+    flex-wrap: wrap;
+}
+.rate-book{
+    font-family: "Libertinus Sans", sans-serif;
+}
+.gideon-roman-regular {
+    font-family: "Gideon Roman", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 19px;
+}
 .quintessential-regular {
-  font-family: "Quintessential", serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Quintessential", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
 }
 .nosifer-regular {
-  font-family: "Nosifer", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Nosifer", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 57px;
 }

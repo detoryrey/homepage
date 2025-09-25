@@ -1,6 +1,6 @@
 import math
 
-from flask import Flask, render_template, g, request
+from flask import Flask, render_template, g, request, redirect, url_for, session
 from db import get_db
 from account_app import account_app
 import click
@@ -60,6 +60,8 @@ def booklist():
         total_books = cur.execute("SELECT COUNT(*) FROM booklist").fetchone()[0]
     print(books)
 
+
+
     # books = cur.execute("SELECT * FROM booklist ORDER BY id DESC LIMIT ? OFFSET ?", (per_page, offset,)).fetchall()
 
     total_pages = math.floor((total_books + per_page - 1) / per_page)
@@ -67,15 +69,29 @@ def booklist():
                            booklist=books,
                            page=page,
                            total_pages=total_pages,
-                           all_genres=all_genres
+                           all_genres=all_genres,
                            )
 
 @app.route('/booklist/<int:book_id>')
 def book_inside(book_id):
     db = get_db(app)
     cur = db.cursor()
+    tag_id = request.args.get("tag")
+    all_tags = cur.execute("SELECT * FROM tag "
+                           "JOIN main.book_tag bt on tag.id = bt.tag_id "
+                           "WHERE book_id = ?", (book_id,)).fetchall()
     book = cur.execute("SELECT * FROM booklist WHERE id = ?", (book_id,)).fetchone()
-    return render_template("book-inside.html", book=book)
+    return render_template("book-inside.html", book=book, all_tags=all_tags)
+
+@app.route("/rate/<int:book_id>", methods=["POST"])
+def rate(book_id):
+    rating = int(request.form["rating"])
+    user_id = session.get("user_id")
+    db = get_db(app)
+    cur = db.cursor()
+    cur.execute("INSERT INTO ratings (book_id, user_id, rating) VALUES (?, ?, ?)", (book_id, user_id, rating))
+    db.commit()
+    return redirect(url_for("book_inside", book_id=book_id))
 
 
 @app.route('/throne-of-glass')

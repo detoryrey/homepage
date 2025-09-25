@@ -7,7 +7,7 @@
   <main>
 
     <div class="blok-list container">
-      <h1 class="col gideon-roman-regular pb-4">All Book</h1>
+      <h1 class="allbook col gideon-roman-regular pb-4">All Book</h1>
       <div id="genres" class="pb-5 gideon-roman-regular">
         <a class="button_genre rounded-5 btn bg-danger-subtle" href="{{ url_for('booklist', genre='all') }}">All</a>
         {% for genre in all_genres %}
