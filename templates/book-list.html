@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block header %}
   <link href="/static/booklist.css" rel="stylesheet">
+
 {% endblock %}
 
 {% block body %}
@@ -20,11 +21,11 @@
       <div class="container text-center">
         <div class="row">
           {% for book in booklist %}
-            <div class="col">
+            <div class="col book-card">
               <a href="{{ url_for('book_inside', book_id=book['id']) }}">
                 <img src="{{ book['bookimg'] }}" style="width: 200px; height: 300px;">
               </a>
-              <div id="bookname" class="bad-script-regular">
+              <div id="bookname" class="bookname bad-script-regular">
                 <a href="{{ url_for('book_inside', book_id=book['id']) }}">
                   {{ book['bookname'] }}
                 </a>
@@ -36,7 +37,7 @@
           {% endfor %}
         </div>
         <nav aria-label="Page navigation">
-          <ul class="pagination justify-content-center">
+          <ul class="pagination justify-content-center p-lg-4">
             {% if page > 1 %}
               <li class="page-item">
                 <a class="page-link" href="{{ url_for('booklist', page=page-1) }}" aria-label="Previous">

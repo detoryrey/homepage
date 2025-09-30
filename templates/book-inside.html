@@ -4,7 +4,7 @@
   <link href="/static/booklist.css" rel="stylesheet">
   <script src="/static/star-rating.js"></script>
   <script src="/static/booksadded.js"></script>
-
+  <script src="/static/booksdelete.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -20,8 +20,16 @@
                 Add book
               </button>
               <ul class="dropdown-menu">
-                <li><button class="dropdown-item" type="button">Planned books</button></li>
-                <li><button class="dropdown-item" type="button">Read books</button></li>
+                <li>
+                  <button class="dropdown-item" onclick="addBook({{ book['id'] }}, 'planned')">Planned books</button>
+                </li>
+                <li>
+                  <button class="dropdown-item" onclick="addBook({{ book['id'] }}, 'read')">Read books</button>
+                </li>
+                <li>
+                  <button class="dropdown-item text-danger" onclick="removeBook({{ book['id'] }})">
+                    ❌ Remove</button>
+                </li>
               </ul>
             </div>
           </div>

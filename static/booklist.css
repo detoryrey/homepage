@@ -18,9 +18,9 @@ main{
     border: none;
     background-color: #a58181;
     width: 207px;
-    height: 50px;
     font-family: "Ojuju", sans-serif;
     font-size: larger;
+
 }
 #genres{
     gap: 10px;
@@ -28,8 +28,28 @@ main{
     flex-wrap: wrap;
     font-size: larger;
 }
-#bookname{
-    font-family: "Libertinus Sans", sans-serif;
+.bookname a{
+    text-decoration: none !important;
+    color: black !important;
+    font-family: "Gideon Roman", sans-serif !important;
+    font-size: 20px;
+}
+.book-card {
+    border: 4px solid rgba(238, 238, 238, 0.6);
+    border-radius: 15px;
+    padding: 15px;
+    background-color: rgba(248, 248, 248, 0.5);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.pagination .page-link {
+    color: black;
+    background-color: #d59797;
+}
+.page-item.active .page-link {
+    color: #ffffff !important;
+    background: #755454 !important;
+    border-color: #755454;
 }
 
 

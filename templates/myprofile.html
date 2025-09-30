@@ -2,11 +2,12 @@
 {% block header %}
   <link href="/static/profile-style.css" rel="stylesheet">
   <script src="/static/profile.js"></script>
+
 {% endblock %}
 
 
 {% block body %}
-  <section class="profile">
+  <section class="profile" style="min-height: 100vh">
     <div class="profile-header"></div>
     <div class="container">
       <div class="d-flex align-items-center">
@@ -24,10 +25,10 @@
             <button class="tab-link active" data-tab="blog">Blog</button>
           </div>
           <div class="my-2">
-            <button class="tab-link" data-tab="books">Books read</button>
+            <button class="tab-link" data-tab="read_books">Books read</button>
           </div>
           <div>
-            <button class="tab-link" data-tab="planned">Planned books</button>
+            <button class="tab-link" data-tab="planned_books">Planned books</button>
           </div>
         </div>
 
@@ -48,18 +49,42 @@
             {% endfor %}
           </div>
 
-          <div class="tab-content" id="books">
-            <h2>Books read</h2>
+          <div class="tab-content" id="read_books">
+            <div class="row">
+              {% for book in read_books %}
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                  <div class="card h-100 shadow-sm">
+                    <img src="{{ book['bookimg'] }}" class="card-img-top" alt="{{ book['bookname'] }}">
+                    <div class="card-body text-center">
+                      <h6 class="card-title">{{ book['bookname'] }}</h6>
+                      <p class="card-text text-muted" style="font-size: 0.9rem;">{{ book['author'] }}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
           </div>
 
-          <div class="tab-content" id="planned">
-            <h2>Planned books</h2>
+          <div class="tab-content" id="planned_books">
+            <div class="row">
+              {% for book in planned_books %}
+                <div class="col-md-2 col-sm-4 col-6 mb-4">
+                  <div class="card h-100 shadow-sm">
+                    <img src="{{ book['bookimg'] }}" class="card-img-top" alt="{{ book['bookname'] }}">
+                    <div class="card-body text-center">
+                      <h6 class="card-title">{{ book['bookname'] }}</h6>
+                      <p class="card-text text-muted" style="font-size: 0.9rem;">{{ book['author'] }}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
           </div>
+
         </div>
-
       </div>
-
     </div>
+
   </section>
 
 {% endblock %}

@@ -11,13 +11,13 @@ app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_FILE_DIR"] = "session_data"
-Session(app, )
 app.config['DATABASE'] = 'homepage.db'
+Session(app, )
 
 app.register_blueprint(account_app)
 
 @app.teardown_appcontext
-def fuck_you(exception):
+def teardown_db_connection(exception):
     db = g.pop('db', None)
     if db is not None:
         db.close()
@@ -93,6 +93,9 @@ def rate(book_id):
     db.commit()
     return redirect(url_for("book_inside", book_id=book_id))
 
+@app.route("/character")
+def character():
+    return render_template("character.html")
 
 @app.route('/throne-of-glass')
 def throne_of_glass():

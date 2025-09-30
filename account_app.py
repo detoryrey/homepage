@@ -30,9 +30,32 @@ def profile():
         flash("User not found.")
         return redirect(url_for("account_app.log_in"))
     posts = cur.execute("SELECT * FROM post WHERE post.user_id = ? ORDER BY id DESC", (user_id,)).fetchall()
-    return render_template("myprofile.html", user=user, posts=posts)
 
-def add_book(user_id, book_id, list_type):
+    cur.execute("""
+                SELECT booklist.bookname, booklist.bookimg
+                FROM user_books
+                         JOIN booklist ON user_books.book_id = booklist.id
+                WHERE user_books.user_id = ?
+                  AND user_books.planned_book = 1
+                """, (user_id,))
+    planned_books = cur.fetchall()
+    cur.execute("""
+                SELECT booklist.bookname, booklist.bookimg
+                FROM user_books
+                         JOIN booklist ON user_books.book_id = booklist.id
+                WHERE user_books.user_id = ?
+                  AND user_books.read_book = 1
+                """, (user_id,))
+    read_books = cur.fetchall()
+
+    return render_template("myprofile.html",
+                           user=user,
+                           posts=posts,
+                           planned_books=planned_books,
+                           read_books=read_books
+                           )
+
+def do_add_book(user_id, book_id, list_type):
     db = get_db(account_app)
     cur = db.cursor()
 
@@ -41,9 +64,17 @@ def add_book(user_id, book_id, list_type):
 
     if row:
         if list_type == "read":
-            cur.execute("UPDATE user_books SET read_book = 1 WHERE user_id = ? AND book_id = ?", (user_id, book_id))
+            cur.execute("""
+            UPDATE user_books
+            SET read_book = 1, planned_book = 0
+            WHERE user_id = ? AND book_id = ?
+        """, (user_id, book_id))
         elif list_type == "planned":
-            cur.execute("UPDATE user_books SET planned_book = 1 WHERE user_id = ? AND book_id = ?", (user_id, book_id))
+            cur.execute("""
+            UPDATE user_books
+            SET planned_book = 1, read_book = 0
+            WHERE user_id = ? AND book_id = ?
+        """, (user_id, book_id))
     else:
         planned = 1 if list_type == "planned" else 0
         read = 1 if list_type == "read" else 0
@@ -57,11 +88,24 @@ def add_book():
     user_id = data.get('user_id')
     book_id = data.get('book_id')
     list_type = data.get('list_type')
-    add_book(user_id, book_id, list_type)
+    do_add_book(user_id, book_id, list_type)
     return jsonify({"success": True})
 
 if __name__ == '__main__':
     account_app.run(debug=True)
+
+def do_remove_book(user_id, book_id):
+    db = get_db(account_app)
+    cur = db.cursor()
+    cur.execute("DELETE FROM user_books WHERE user_id = ? AND book_id = ?", (user_id, book_id))
+    db.commit()
+@account_app.route('/remove_book', methods=['POST'])
+def remove_book():
+    data = request.json
+    user_id = session.get("user_id")
+    book_id = data.get('book_id')
+    do_remove_book(user_id, book_id)
+    return jsonify({"success": True})
 
 @account_app.route('/add-post', methods=['POST'])
 def add_post():
